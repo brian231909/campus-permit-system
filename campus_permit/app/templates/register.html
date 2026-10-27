@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}註冊｜校園車證系統{% endblock %}
+{% block content %}
+<h1>校園車證系統</h1>
+<h2>註冊</h2>
+<form id="register-form" autocomplete="off">
+  <label>身分
+    <select name="user_type" required>
+      <option value="student">學生</option>
+      <option value="teacher">教職員</option>
+    </select>
+  </label>
+  <label>學號／教職員編號（6–12 碼英數字）
+    <input name="school_id" required maxlength="12">
+  </label>
+  <label>姓名
+    <input name="name" required maxlength="50">
+  </label>
+  <label>信箱
+    <input name="email" type="email" required maxlength="254">
+  </label>
+  <label>手機（選填，09 開頭 10 碼）
+    <input name="phone" maxlength="10" inputmode="numeric">
+  </label>
+  <label>密碼（至少 12 字元）
+    <input name="password" type="password" required minlength="12" maxlength="128" autocomplete="new-password">
+  </label>
+  <button type="submit">送出註冊</button>
+</form>
+<p class="muted">已有帳號？<a href="/login">登入</a>。註冊後需等管理員啟用才能登入。</p>
+{% endblock %}

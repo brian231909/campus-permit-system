@@ -1,0 +1,28 @@
+body { font-family: system-ui, "Noto Sans TC", sans-serif; background: #f3f4f6; margin: 0; }
+.card { max-width: 420px; margin: 40px auto; background: #fff; padding: 24px 28px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+h1 { font-size: 1.3rem; margin: 0 0 4px; }
+h2 { font-size: 1.05rem; margin: 0 0 16px; color: #374151; }
+label { display: block; margin-bottom: 12px; font-size: .9rem; color: #374151; }
+input, select { display: block; width: 100%; box-sizing: border-box; margin-top: 4px; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; }
+button { padding: 9px 18px; border: 0; border-radius: 6px; background: #2563eb; color: #fff; font-size: 1rem; cursor: pointer; }
+button:hover { background: #1d4ed8; }
+.muted { color: #6b7280; font-size: .85rem; }
+.msg { min-height: 1.2em; margin-top: 14px; font-size: .9rem; }
+.msg.ok { color: #047857; }
+.msg.err { color: #b91c1c; }
+.page-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:20px; }
+body:has(.panel) .card { max-width: 980px; }
+.panel { border:1px solid #e5e7eb; border-radius:10px; padding:18px; margin:16px 0; background:#fff; }
+.panel h2 { margin-bottom:14px; }
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; align-items:end; }
+textarea { display:block; width:100%; box-sizing:border-box; margin-top:4px; padding:8px; border:1px solid #d1d5db; border-radius:6px; font:inherit; }
+.secondary { background:#4b5563; } .secondary:hover { background:#374151; }
+.danger { background:#b91c1c; } .danger:hover { background:#991b1b; }
+.list { display:grid; gap:10px; margin-top:12px; }
+.item { border:1px solid #e5e7eb; border-radius:8px; padding:12px; overflow-wrap:anywhere; }
+.card-item h3 { margin:0 0 8px; font-size:1rem; }
+.card-item p { margin:6px 0; }
+.actions,.toolbar { display:flex; gap:10px; align-items:end; flex-wrap:wrap; margin-top:10px; }
+.actions textarea { flex:1; }
+.item select { display:inline-block; width:auto; margin-right:8px; }
+@media (max-width:600px) { .page-head { flex-direction:column; } .page-head button { align-self:flex-start; } }

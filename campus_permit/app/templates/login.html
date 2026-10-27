@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}登入｜校園車證系統{% endblock %}
+{% block content %}
+<h1>校園車證系統</h1>
+<h2>登入</h2>
+<form id="login-form" autocomplete="on">
+  <label>學號／教職員編號
+    <input name="school_id" required maxlength="12" autocomplete="username">
+  </label>
+  <label>密碼
+    <input name="password" type="password" required maxlength="128" autocomplete="current-password">
+  </label>
+  <button type="submit">登入</button>
+</form>
+<p class="muted">還沒有帳號？<a href="/register">註冊</a></p>
+{% endblock %}

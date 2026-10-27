@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}車證管理首頁｜校園車證系統{% endblock %}
+{% block content %}
+<header class="page-head">
+  <div><h1>校園車證管理系統</h1><p class="muted">您好，{{ user.name }}（{{ user.school_id }}）｜{{ "管理員" if user.role == "admin" else "申請者" }}</p></div>
+  <button id="logout-btn" type="button" class="secondary">登出</button>
+</header>
+{% if user.role == "admin" %}
+<section class="panel">
+  <h2>管理員｜待審核申請</h2>
+  <div class="toolbar"><label>狀態篩選<select id="admin-status"><option value="pending">待審核</option><option value="approved">已核准</option><option value="rejected">已駁回</option><option value="expired">已逾期</option><option value="cancelled">已取消</option></select></label><button id="load-admin" type="button">查詢</button></div>
+  <div id="admin-permits" class="list"></div>
+</section>
+<section class="panel"><h2>帳號管理</h2><button id="load-users" type="button">載入帳號</button><div id="users-list" class="list"></div></section>
+<section class="panel"><h2>稽核日誌</h2><button id="load-audit" type="button">載入最近紀錄</button><div id="audit-list" class="list"></div></section>
+{% else %}
+<section class="panel">
+  <h2>新增車輛</h2>
+  <form id="vehicle-form" class="form-grid">
+    <label>車牌號碼<input name="license_plate" required minlength="2" maxlength="12" placeholder="ABC-1234"></label>
+    <label>車種<select name="vehicle_type" required><option value="motorcycle">機車</option><option value="car">汽車</option><option value="other">其他</option></select></label>
+    <label>廠牌／型號<input name="make_model" maxlength="80"></label>
+    <label>顏色<input name="color" maxlength="30"></label>
+    <div><button type="submit">新增車輛</button></div>
+  </form>
+</section>
+<section class="panel"><h2>我的車輛</h2><button id="load-vehicles" type="button">重新載入</button><div id="vehicles-list" class="list"></div></section>
+<section class="panel">
+  <h2>申請車證</h2>
+  <form id="permit-form">
+    <label>選擇車輛<select id="permit-vehicle" name="vehicle_id" required><option value="">請先新增車輛</option></select></label>
+    <label>申請用途<textarea name="purpose" required minlength="3" maxlength="300" rows="3" placeholder="請說明申請車證用途"></textarea></label>
+    <button type="submit">送出申請</button>
+  </form>
+  <p class="muted">所有申請均由管理員審核；核准後自核准日起有效一年。</p>
+</section>
+<section class="panel"><h2>我的車證申請</h2><button id="load-permits" type="button">重新載入</button><div id="permits-list" class="list"></div></section>
+{% endif %}
+{% endblock %}
