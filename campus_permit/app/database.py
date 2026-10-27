@@ -9,7 +9,17 @@ class Base(DeclarativeBase):
     pass
 
 
-engine = create_engine(config.DATABASE_URL, connect_args={"check_same_thread": False})
+
+from sqlalchemy import create_engine
+from . import config
+
+if config.DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(
+        config.DATABASE_URL,
+        connect_args={"check_same_thread": False}
+    )
+else:
+    engine = create_engine(config.DATABASE_URL)
 
 
 @event.listens_for(engine, "connect")
